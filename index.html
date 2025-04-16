@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulário </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #f9f9f9;
+    }
+    form {
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    .opcoes {
+      margin-top: 5px;
+    }
+    .opcoes label {
+      display: block;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="meuFormulario" action="https://formspree.io/f/xpwpepan" method="post">
+    <h2>Motivação de escolha de grupo.</h2>
+
+    <h3>Secção I: Informações Gerais</h3>
+
+    
+
+    
+    <strong><label>1. Idade:</label></strong>
+    <select name="Idade">
+      <option value="16">16 anos</option>
+      <option value="17">17 anos</option>
+      <option value="18">18 anos</option>
+      <option value="19">19 anos</option>
+      <option value="20">20 anos</option>
+      <option value="+20">+20 anos</option>
+      
+    </select>
+
+    <strong><label>2. Sexo:</label></strong>
+    <div class="opcoes">
+      <label><input type="radio" name="sexo" value="Masculino"> Masculino</label>
+      <label><input type="radio" name="sexo" value="Feminino"> Feminino</label>
+    </div>
+
+    <strong><label>3. Classe:</label></strong>
+    <div class="opcoes">
+     
+      <label><input type="radio" name="classe" value="11"> 11ª</label>
+      <label><input type="radio" name="classe" value="12"> 12ª</label>
+    </div>
+
+   
+
+    <h3>Secção II: Escolha de grupo.</h3>
+
+    <strong><label>4. A sua escolha foi feita principalmente com base em:</label></strong>
+    <select name="primeira-escolha">
+      <option value="Seu próprio interesse e decisão">Seu próprio interesse e decisão.</option>
+      <option value="Opinião de colegas ou amigos">Opinião de colegas ou amigos.</option>
+      <option value="Sugestão de professores ou orientadores.">Sugestão de professores ou orientadores.</option>
+      <option value="Disponibilidade de material e recursos na escola.">Disponibilidade de material e recursos na escola.</option>
+      <option value="segui a orientacão de sistema de escolha de grupo">segui a orientacão de sistema de escolha de grupo.</option>
+      
+    </select>
+
+    <strong><label>5. Você escolheu este grupo pensando em qual dos objectivos?</label></strong>
+    <select name="objectivo">
+      <option value="Continuar os estudos numa área específica no ensino superior.">Continuar os estudos numa área específica no ensino superior.</option>
+      <option value="Ter mais chances de conseguir emprego depois de terminar o nível médio">Ter mais chances de conseguir emprego depois de terminar o nível médio.</option>
+      <option value="Porque gosta mais das disciplinas do grupo">Porque gosta mais das disciplinas do grupo.</option>
+      <option value="Tem uma certa inclinação na área.">Tem uma certa inclinação na área.</option>
+      
+      
+    </select>
+   
+
+    <strong><label>6. Se pudesse escolher novamente,Você  manteria a mesma escolha?</label></strong>
+    <select name="nova-escolha">
+      <option value="Sim, totalmente">Sim, totalmente.</option>
+      <option value="Mais ou menos">Mais ou menos.</option>
+      <option value="Pouco">Pouco.</option>
+      <option value="Não">Não.</option>
+    </select>
+
+    <strong><label>7. Como avalias o seu desenpenho nas disciplinas do grupo escolhido?</label></strong>
+    <select name="avaliacao">
+      <option value="Muito bem" >Muito bem.</option>
+      <option value="Bom">Bom.</option>
+      <option value="Regular">Regular.</option>
+      <option value="Fraco">Fraco.</option>
+      
+      
+    </select>
+
+
+  
+
+    <p>Obrigado pela sua participação!</p>
+
+    <button type="submit">Enviar Resposta</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('meuFormulario');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const data = new FormData(form);
+      fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          alert("Formulário enviado com sucesso!");
+          window.location.href = "simulador.html";
+        } else {
+          alert("Erro ao enviar. Tente novamente.");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
